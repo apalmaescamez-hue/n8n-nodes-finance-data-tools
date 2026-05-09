@@ -5,7 +5,7 @@
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import { runAiFinanceTool } from '../../domain/ai/financeTool';
 import type { AiFinanceToolOperation, AiFinanceToolOptions } from '../../domain/ai/financeTool';
@@ -24,8 +24,8 @@ export class AiFinanceTool implements INodeType {
       name: 'AI Finance Tool',
     },
     usableAsTool: true,
-    inputs: [NodeConnectionType.Main],
-    outputs: [NodeConnectionType.Main],
+    inputs: [NodeConnectionTypes.Main],
+    outputs: [NodeConnectionTypes.Main],
     properties: [
       {
         displayName: 'Resource',
@@ -334,3 +334,4 @@ function parseDomainOptions(
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
+

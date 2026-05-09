@@ -1,11 +1,11 @@
-import type {
+﻿import type {
   IDataObject,
   IExecuteFunctions,
   INodeExecutionData,
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import { profileDataset } from '../../domain/data/profiling';
 import { createAuditTrailEvent, createFailureOutput, createNodeError } from '../../shared';
@@ -23,8 +23,8 @@ export class DataProfiler implements INodeType {
       name: 'Data Profiler',
     },
     usableAsTool: true,
-    inputs: [NodeConnectionType.Main],
-    outputs: [NodeConnectionType.Main],
+    inputs: [NodeConnectionTypes.Main],
+    outputs: [NodeConnectionTypes.Main],
     properties: [
       {
         displayName: 'Operation',
@@ -145,3 +145,4 @@ export class DataProfiler implements INodeType {
     }
   }
 }
+

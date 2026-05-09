@@ -12,16 +12,18 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "domain/**/*.ts",
     "nodes/**/*.ts",
-    "test/**/*.ts",
-    "vitest.config.ts"
+    "shared/**/*.ts"
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "test",
+    "vitest.config.ts"
   ]
 }

@@ -5,7 +5,7 @@
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { ApplicationError, NodeConnectionType, NodeOperationError } from 'n8n-workflow';
+import { ApplicationError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import { normalizeDataset } from '../../domain/data/normalization';
 import type { NormalizeDatasetOptions, PercentageOutputMode } from '../../domain/data/normalization';
@@ -24,8 +24,8 @@ export class DataNormalizer implements INodeType {
       name: 'Data Normalizer',
     },
     usableAsTool: true,
-    inputs: [NodeConnectionType.Main],
-    outputs: [NodeConnectionType.Main],
+    inputs: [NodeConnectionTypes.Main],
+    outputs: [NodeConnectionTypes.Main],
     properties: [
       {
         displayName: 'Operation',
@@ -283,3 +283,5 @@ function parseJsonObjectParameter(value: unknown, parameterName: string): Record
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
+
+

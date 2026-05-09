@@ -296,8 +296,8 @@ function executeChildOperation(
       }) as StandardNodeOutput<unknown>;
     case 'evaluate_prediction_model':
       return evaluatePredictionModel(rowInput, {
-        actualColumn: options.actualColumn ?? asString(domainOptions.actualColumn),
-        predictedColumn: options.predictedColumn ?? asString(domainOptions.predictedColumn),
+        actualColumn: options.actualColumn ?? asString(domainOptions.actualColumn) ?? 'actual',
+        predictedColumn: options.predictedColumn ?? asString(domainOptions.predictedColumn) ?? 'predicted',
       }) as StandardNodeOutput<unknown>;
   }
 }
@@ -615,3 +615,4 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function isAiFinanceToolOperation(value: unknown): value is AiFinanceToolOperation {
   return typeof value === 'string' && SUPPORTED_AI_FINANCE_TOOL_OPERATIONS.includes(value as AiFinanceToolOperation);
 }
+

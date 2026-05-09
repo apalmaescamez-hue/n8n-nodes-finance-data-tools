@@ -4,7 +4,7 @@ export interface CreateAuditTrailEventInput {
   step: string;
   message: string;
   timestamp?: string;
-  details?: Record<string, unknown>;
+  details?: unknown;
 }
 
 export function createAuditTrailEvent(input: CreateAuditTrailEventInput): AuditTrailEvent {
@@ -20,3 +20,4 @@ export function createAuditTrailEvent(input: CreateAuditTrailEventInput): AuditT
 
   return event;
 }
+

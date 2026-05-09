@@ -5,7 +5,7 @@
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
+import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import { buildFinancialReport } from '../../domain/finance/reports';
 import type {
@@ -28,8 +28,8 @@ export class FinancialReportBuilder implements INodeType {
       name: 'Financial Report Builder',
     },
     usableAsTool: true,
-    inputs: [NodeConnectionType.Main],
-    outputs: [NodeConnectionType.Main],
+    inputs: [NodeConnectionTypes.Main],
+    outputs: [NodeConnectionTypes.Main],
     properties: [
       {
         displayName: 'Operation',
@@ -175,3 +175,4 @@ export class FinancialReportBuilder implements INodeType {
     }
   }
 }
+

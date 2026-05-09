@@ -6,7 +6,7 @@ export interface NodeMessageBase {
   code: string;
   message: string;
   field?: string;
-  details?: Record<string, unknown>;
+  details?: unknown;
 }
 
 export interface NodeWarning extends NodeMessageBase {
@@ -21,7 +21,7 @@ export interface AuditTrailEvent {
   timestamp: string;
   step: string;
   message: string;
-  details?: Record<string, unknown>;
+  details?: unknown;
 }
 
 export interface StandardNodeMetadata {
@@ -35,6 +35,7 @@ export interface StandardNodeOutput<
   TData,
   TMetadata extends StandardNodeMetadata = StandardNodeMetadata,
 > {
+  [key: string]: unknown;
   success: boolean;
   operation: string;
   data: TData | null;
@@ -43,3 +44,4 @@ export interface StandardNodeOutput<
   errors: NodeError[];
   auditTrail: AuditTrailEvent[];
 }
+

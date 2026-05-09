@@ -1,4 +1,4 @@
-import Decimal from 'decimal.js';
+﻿import Decimal from 'decimal.js';
 import * as statistics from 'simple-statistics';
 import { z } from 'zod';
 
@@ -958,7 +958,7 @@ function calculateGroupAggregate(
         const parsed = parseDecimalValue(value);
         const numberValue = parsed.value?.toNumber();
 
-        if (parsed.parsed && parsed.value !== null && Number.isFinite(numberValue)) {
+        if (parsed.parsed && parsed.value !== null && typeof numberValue === 'number' && Number.isFinite(numberValue)) {
           accumulator.values.push(parsed.value);
         } else {
           accumulator.ignoredValueCount += 1;
@@ -1088,7 +1088,7 @@ function collectNumericObservations(rows: DataRow[], columnName: string): Numeri
     const parsed = parseDecimalValue(value);
     const numberValue = parsed.value?.toNumber();
 
-    if (parsed.parsed && parsed.value !== null && Number.isFinite(numberValue)) {
+    if (parsed.parsed && parsed.value !== null && typeof numberValue === 'number' && Number.isFinite(numberValue)) {
       observations.push({
         rowIndex,
         value: parsed.value,
@@ -1138,6 +1138,8 @@ function collectNumericPairs(rows: DataRow[], xColumn: string, yColumn: string):
       parsedY.parsed &&
       parsedX.value !== null &&
       parsedY.value !== null &&
+      typeof xNumber === 'number' &&
+      typeof yNumber === 'number' &&
       Number.isFinite(xNumber) &&
       Number.isFinite(yNumber)
     ) {
@@ -1341,14 +1343,14 @@ function normalizeNumericString(input: string): string | null {
 
   working = working
     .replace(/\b(?:AUD|BRL|CAD|CHF|CNY|EUR|GBP|JPY|MXN|NZD|USD)\b/gi, ' ')
-    .replace(/[€$£¥]/g, ' ')
+    .replace(/[â‚¬$Â£Â¥]/g, ' ')
     .trim();
 
   if (/[A-Za-z]/.test(working)) {
     return null;
   }
 
-  working = working.replace(/[\s'’]/g, '');
+  working = working.replace(/[\s'â€™]/g, '');
 
   if (working.startsWith('-')) {
     negative = !negative;
@@ -1484,3 +1486,4 @@ function formatDecimal(value: Decimal, decimalPlaces = 12): string {
 function round(value: number, precision = 6): number {
   return Number(value.toFixed(precision));
 }
+
