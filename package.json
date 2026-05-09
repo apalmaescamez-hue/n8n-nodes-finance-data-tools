@@ -1,0 +1,81 @@
+{
+  "name": "n8n-nodes-finance-data-tools",
+  "version": "0.1.0",
+  "description": "Self-hosted n8n community nodes for finance data quality, ratios, accounting validation, reporting, predictive analytics, and AI Agent tools.",
+  "license": "MIT",
+  "homepage": "https://github.com/apalmaescamez-hue/n8n-nodes-finance-data-tools#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apalmaescamez-hue/n8n-nodes-finance-data-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apalmaescamez-hue/n8n-nodes-finance-data-tools/issues"
+  },
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "finance",
+    "data-quality",
+    "profiling",
+    "cleaning",
+    "ratios",
+    "accounting",
+    "reporting",
+    "reports",
+    "forecasting",
+    "predictive-analytics",
+    "ai-agent",
+    "ai-tool"
+  ],
+  "author": {
+    "name": "apalmaescamez-hue"
+  },
+  "main": "dist/nodes/DataProfiler/DataProfiler.node.js",
+  "types": "dist/nodes/DataProfiler/DataProfiler.node.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "docs",
+    "examples",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/nodes/DataProfiler/DataProfiler.node.js",
+      "dist/nodes/DataCleaner/DataCleaner.node.js",
+      "dist/nodes/DataNormalizer/DataNormalizer.node.js",
+      "dist/nodes/MathStatistics/MathStatistics.node.js",
+      "dist/nodes/FinancialRatios/FinancialRatios.node.js",
+      "dist/nodes/AccountingValidator/AccountingValidator.node.js",
+      "dist/nodes/FinancialReportBuilder/FinancialReportBuilder.node.js",
+      "dist/nodes/PredictiveAnalytics/PredictiveAnalytics.node.js",
+      "dist/nodes/AiFinanceTool/AiFinanceTool.node.js"
+    ]
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "decimal.js": "^10.6.0",
+    "simple-statistics": "^7.8.9",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.29.1",
+    "eslint": "9.29.0",
+    "n8n-workflow": "^2.16.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "name": "Accounting Validator Wrapper - Editable Template",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 160]
+    },
+    {
+      "parameters": {
+        "content": "Editable template. Accounting Validator expects chartOfAccounts/accounts and entries in one JSON object.",
+        "height": 170,
+        "width": 380
+      },
+      "id": "template-note",
+      "name": "Template Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, -100]
+    },
+    {
+      "parameters": {
+        "operation": "validate_and_build_trial_balance",
+        "currency": "EUR",
+        "allowLineWithBothDebitAndCredit": false,
+        "allowNegativeAmounts": false,
+        "includeTrialBalance": true
+      },
+      "id": "accounting-validator",
+      "name": "Validate Accounting Entries",
+      "type": "n8n-nodes-finance-data-tools.accountingValidator",
+      "typeVersion": 1,
+      "position": [380, 160]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          { "node": "Validate Accounting Entries", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Manual Trigger": [
+      {
+        "json": {
+          "accounts": [
+            {
+              "code": "1000",
+              "name": "Cash",
+              "type": "asset",
+              "currency": "EUR",
+              "active": true
+            },
+            {
+              "code": "4000",
+              "name": "Revenue",
+              "type": "income",
+              "currency": "EUR",
+              "active": true
+            },
+            {
+              "code": "6000",
+              "name": "Expense",
+              "type": "expense",
+              "currency": "EUR",
+              "active": true
+            }
+          ],
+          "entries": [
+            {
+              "id": "JE-001",
+              "date": "2026-01-31",
+              "currency": "EUR",
+              "description": "January revenue",
+              "lines": [
+                {
+                  "accountCode": "1000",
+                  "debit": "1000",
+                  "credit": "0"
+                },
+                {
+                  "accountCode": "4000",
+                  "debit": "0",
+                  "credit": "1000"
+                }
+              ]
+            },
+            {
+              "id": "JE-002",
+              "date": "2026-01-31",
+              "currency": "EUR",
+              "description": "January expense",
+              "lines": [
+                {
+                  "accountCode": "6000",
+                  "debit": "300",
+                  "credit": "0"
+                },
+                {
+                  "accountCode": "1000",
+                  "debit": "0",
+                  "credit": "300"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "template": true,
+    "notes": "Editable accounting validation wrapper with balanced sample entries."
+  }
+}

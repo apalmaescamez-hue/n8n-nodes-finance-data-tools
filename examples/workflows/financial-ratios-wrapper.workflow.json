@@ -1,0 +1,81 @@
+{
+  "name": "Financial Ratios Wrapper - Editable Template",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 160]
+    },
+    {
+      "parameters": {
+        "content": "Editable template. Financial Ratios expects one aggregated finance object, not raw ledger rows.",
+        "height": 160,
+        "width": 340
+      },
+      "id": "template-note",
+      "name": "Template Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, -80]
+    },
+    {
+      "parameters": {
+        "operation": "calculate_financial_ratios",
+        "currency": "EUR",
+        "includePercentages": true,
+        "burnRateSource": "auto",
+        "ratios": [
+          "gross_margin",
+          "net_margin",
+          "current_ratio",
+          "debt_to_equity",
+          "runway"
+        ]
+      },
+      "id": "financial-ratios",
+      "name": "Calculate Ratios",
+      "type": "n8n-nodes-finance-data-tools.financialRatios",
+      "typeVersion": 1,
+      "position": [360, 160]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          { "node": "Calculate Ratios", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Manual Trigger": [
+      {
+        "json": {
+          "currency": "EUR",
+          "revenue": "100000",
+          "costOfGoodsSold": "40000",
+          "grossProfit": "60000",
+          "netIncome": "18000",
+          "currentAssets": "70000",
+          "currentLiabilities": "35000",
+          "totalDebt": "50000",
+          "totalEquity": "125000",
+          "cash": "30000",
+          "monthlyExpenses": "15000"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "template": true,
+    "notes": "Editable financial ratios wrapper for one aggregated finance object."
+  }
+}

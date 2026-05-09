@@ -1,0 +1,58 @@
+import type { DataRow } from '../../domain/data/profiling';
+
+export const financeRowsFixture: DataRow[] = [
+  {
+    ticker: 'AAPL',
+    price: 100,
+    volume: 1000,
+    sector: 'Technology',
+    active: true,
+    asOf: '2026-05-01',
+    currency: 'USD',
+  },
+  {
+    ticker: 'MSFT',
+    price: 110,
+    volume: 1500,
+    sector: 'Technology',
+    active: true,
+    asOf: '2026-05-02',
+    currency: 'USD',
+  },
+  {
+    ticker: 'TSLA',
+    price: 1000,
+    volume: null,
+    sector: 'Automotive',
+    active: false,
+    asOf: '2026-05-03',
+    currency: 'USD',
+  },
+  {
+    ticker: 'AAPL',
+    price: 100,
+    volume: 1000,
+    sector: 'Technology',
+    active: true,
+    asOf: '2026-05-01',
+    currency: 'USD',
+  },
+  {
+    ticker: 'GOOG',
+    price: '120',
+    volume: '2000',
+    sector: 'Technology',
+    active: 'true',
+    asOf: '2026-05-04',
+    currency: 'USD',
+  },
+  {
+    ticker: 'EMPTY',
+    price: '',
+    volume: undefined,
+    sector: null,
+    active: null,
+    asOf: '',
+    currency: 'USD',
+  },
+];

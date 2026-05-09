@@ -1,0 +1,107 @@
+{
+  "name": "Finance Data Quality Wrapper - Editable Template",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 240]
+    },
+    {
+      "parameters": {
+        "content": "Editable template. Install n8n-nodes-finance-data-tools first. If import reports an unknown custom node, confirm the custom node type in your n8n version.",
+        "height": 180,
+        "width": 360
+      },
+      "id": "template-note",
+      "name": "Template Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "operation": "cleanDataset",
+        "normalizeColumnNames": true,
+        "columnNameStyle": "snake_case",
+        "trimStrings": true,
+        "collapseWhitespace": true,
+        "stringCase": "preserve",
+        "treatConfiguredNullsAsNull": true,
+        "nullValues": "n/a,na,null,",
+        "nullReplacement": "null",
+        "cleanCurrencySymbols": true,
+        "convertEuropeanNumbers": true,
+        "numericColumns": "revenue,expenses",
+        "removeEmptyColumns": true,
+        "removeDuplicates": true,
+        "deduplicateBy": "fullRow"
+      },
+      "id": "data-cleaner",
+      "name": "Clean Rows",
+      "type": "n8n-nodes-finance-data-tools.dataCleaner",
+      "typeVersion": 1,
+      "position": [320, 120]
+    },
+    {
+      "parameters": {
+        "operation": "profileDataset",
+        "treatEmptyStringAsNull": true,
+        "coerceNumericStrings": true
+      },
+      "id": "data-profiler",
+      "name": "Profile Rows",
+      "type": "n8n-nodes-finance-data-tools.dataProfiler",
+      "typeVersion": 1,
+      "position": [320, 360]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          { "node": "Clean Rows", "type": "main", "index": 0 },
+          { "node": "Profile Rows", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Manual Trigger": [
+      {
+        "json": {
+          "period": "2026-01",
+          "revenue": "1.234,56 EUR",
+          "expenses": "700,10",
+          "customer": " ACME  "
+        }
+      },
+      {
+        "json": {
+          "period": "2026-02",
+          "revenue": "1.450,00 EUR",
+          "expenses": "810,00",
+          "customer": "ACME"
+        }
+      },
+      {
+        "json": {
+          "period": "2026-02",
+          "revenue": "1.450,00 EUR",
+          "expenses": "810,00",
+          "customer": "ACME"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "template": true,
+    "notes": "Editable sample for data cleaning and profiling. Branches intentionally run independently from the same pinned rows."
+  }
+}

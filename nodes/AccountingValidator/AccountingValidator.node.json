@@ -1,0 +1,13 @@
+﻿{
+  "node": "n8n-nodes-finance-data-tools.AccountingValidator",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Data & Storage", "Finance"],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://github.com/your-org/n8n-nodes-finance-data-tools"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "name": "AI Finance Tool Webhook Wrapper - Editable Template",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "finance-tool-wrapper",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook Input",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [0, 200]
+    },
+    {
+      "parameters": {
+        "content": "Editable template. Expected POST body: {\"data\":[...]} for row operations or a single finance object for object operations. If your n8n Set node schema differs, map body.data/body fields manually before AI Finance Tool.",
+        "height": 210,
+        "width": 460
+      },
+      "id": "template-note",
+      "name": "Template Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, -80]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "json": [
+            {
+              "name": "data",
+              "value": "={{$json.body.data ?? $json.body}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "map-request",
+      "name": "Map Request Body",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {
+        "resource": "data",
+        "operation": "profile_data",
+        "maxRows": 1000,
+        "advancedOptionsJson": "{}",
+        "allowPredictiveOperations": false,
+        "maxForecastHorizon": 12,
+        "forecastHorizon": 3
+      },
+      "id": "ai-finance-tool",
+      "name": "AI Finance Tool",
+      "type": "n8n-nodes-finance-data-tools.aiFinanceTool",
+      "typeVersion": 1,
+      "position": [620, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [940, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Input": {
+      "main": [
+        [
+          { "node": "Map Request Body", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Map Request Body": {
+      "main": [
+        [
+          { "node": "AI Finance Tool", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Finance Tool": {
+      "main": [
+        [
+          { "node": "Respond", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "template": true,
+    "notes": "Editable webhook wrapper. Configure resource/operation and mapping to match the agent use case."
+  }
+}
