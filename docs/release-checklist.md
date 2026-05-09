@@ -1,4 +1,4 @@
-# Release checklist
+﻿# Release checklist
 
 This checklist prepares the package for self-hosted release and future official verification work without publishing from the current phase.
 
@@ -52,3 +52,4 @@ If a future maintainer wants verification, create `.github/workflows/publish.yml
 4. Package contents review.
 5. Security/dependency review.
 6. Provenance/publishing decision.
+

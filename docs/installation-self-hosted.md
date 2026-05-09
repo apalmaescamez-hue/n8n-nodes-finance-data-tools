@@ -1,4 +1,4 @@
-# Self-hosted installation and local development
+﻿# Self-hosted installation and local development
 
 Last reviewed: 2026-05-09.
 
@@ -21,7 +21,7 @@ When the package is eventually published to npm, a self-hosted Docker installati
 docker exec -it n8n sh
 mkdir -p ~/.n8n/nodes
 cd ~/.n8n/nodes
-npm install n8n-nodes-finance-data-tools
+npm install @aleexpe03/n8n-nodes-finance-data-tools
 # restart n8n after installation
 ```
 
@@ -32,7 +32,7 @@ For queue mode, private packages, or locked-down environments, prefer the manual
 For self-hosted instances that allow community-node installation from the n8n UI, install the package name once it exists on npm:
 
 ```text
-n8n-nodes-finance-data-tools
+@aleexpe03/n8n-nodes-finance-data-tools
 ```
 
 Do not treat this as a Cloud guarantee. n8n Cloud and verified discovery require separate eligibility and verification work.
@@ -61,3 +61,4 @@ For a future release candidate, use a clean self-hosted n8n instance and test wi
 - n8n Cloud: not promised.
 - Official verification: not claimed.
 - Public npm publication: not performed in this phase.
+

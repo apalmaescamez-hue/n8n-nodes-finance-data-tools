@@ -1,4 +1,4 @@
-# Security and limitations
+﻿# Security and limitations
 
 This package is intentionally deterministic and self-contained for a self-hosted MVP.
 
@@ -52,3 +52,4 @@ Official verification is not claimed.
 - Agents must not overstate predictive outputs.
 - Agents must not infer missing accounting or business context.
 - Predictive operations are disabled by default and require explicit opt-in.
+

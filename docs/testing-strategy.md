@@ -1,4 +1,4 @@
-# Testing strategy
+﻿# Testing strategy
 
 The package test strategy separates deterministic domain validation from n8n adapter validation.
 
@@ -61,3 +61,4 @@ Before modifying a node or domain service:
 - Keep n8n nodes thin; domain services remain pure TypeScript.
 - Do not add filesystem, environment, network, Python, or arbitrary-code execution behavior.
 - Re-run `npm test` and `npm run lint`.
+

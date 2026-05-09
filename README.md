@@ -1,4 +1,4 @@
-# n8n-nodes-finance-data-tools
+﻿# @aleexpe03/n8n-nodes-finance-data-tools
 
 Community node package for finance-oriented data quality, deterministic finance calculations, reporting, predictive analytics, and AI Agent wrappers in n8n.
 
@@ -103,3 +103,4 @@ Shared output, audit, error, and type helpers live in `shared/`.
 - Predictive output is directional, not a guarantee, and must surface warnings.
 
 See [Security and limitations](docs/security-and-limitations.md) for the full model.
+

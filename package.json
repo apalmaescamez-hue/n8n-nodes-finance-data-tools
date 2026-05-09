@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-finance-data-tools",
+  "name": "@aleexpe03/n8n-nodes-finance-data-tools",
   "version": "0.1.0",
   "description": "Self-hosted n8n community nodes for finance data quality, ratios, accounting validation, reporting, predictive analytics, and AI Agent tools.",
   "license": "MIT",

@@ -1,4 +1,4 @@
-# Output contract
+﻿# Output contract
 
 All nodes return one item whose `json` is a standard envelope. This makes workflow routing, AI Agent summarization, and tests consistent across the package.
 
@@ -144,3 +144,4 @@ The AI facade wraps the selected child operation:
 ```
 
 Agents should summarize `data.result`, not invent calculations outside the envelope.
+

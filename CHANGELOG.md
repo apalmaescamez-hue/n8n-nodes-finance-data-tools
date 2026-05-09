@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -24,3 +24,4 @@ All notable changes to this project will be documented in this file.
 - This package has not been published to npm in the current repository state.
 - Official n8n verification is not claimed.
 - `npm run build` was not executed during Phase 8 preparation.
+

@@ -1,4 +1,4 @@
-# AI Agent wrapper guide
+﻿# AI Agent wrapper guide
 
 The package includes an `AI Finance Tool` node designed as a controlled facade for n8n AI Agent usage. The node is configured as usable as a tool and routes requests only to allowlisted deterministic domain operations.
 
@@ -99,3 +99,4 @@ See:
 - `examples/workflows/accounting-validator-wrapper.workflow.json`
 
 These are editable templates. n8n workflow exports can differ between versions, so confirm custom node type names in your instance after installing the package.
+
